@@ -1,0 +1,27 @@
+<div class="flex h-full flex-col space-y-4">
+  <p class="text-center text-4xl font-bold leading-none">Todo App</p>
+
+  <ul class="grow overflow-y-auto">
+    @if (todos.length) {
+      <li class="flex items-center bg-gray-400 p-1 font-semibold">
+        <p class="w-[10%] text-center">번호</p>
+        <p class="grow text-center">제목</p>
+        <p class="w-[20%] text-center">작성시간</p>
+      </li>
+    }
+
+    @for (todo of todos; track todo.id) {
+      <li class="flex items-center bg-gray-200 p-1">
+        <p class="w-[10%] text-center">{{ todo.id }}</p>
+        <a class="grow text-center" [routerLink]="['/', todo.id]">{{ todo.title }}</a>
+        <p class="w-[20%] text-center">{{ todo.updatedAt ?? todo.createdAt | date: 'h:mm:ss' }}</p>
+      </li>
+    } @empty {
+      <div class="flex h-full items-center justify-center">글 없음</div>
+    }
+  </ul>
+
+  <div class="flex justify-end">
+    <a class="rounded-md bg-blue-400 px-2 py-1 text-white" routerLink="/form">생성</a>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="flex h-full flex-col space-y-1">
+  <div class="flex grow flex-col divide-y border">
+    <div class="flex items-center">
+      <p class="border-r px-2">{{ todo?.id }}</p>
+      <p class="grow text-center">{{ todo?.title }}</p>
+    </div>
+    <p class="grow">{{ todo?.content }}</p>
+    <p class="text-right">{{ todo?.updatedAt ? '수정시간' : '작성시간' }} {{ todo?.updatedAt ?? todo?.createdAt | date: 'h:mm:ss' }}</p>
+  </div>
+  <div class="flex items-center justify-between">
+    <button type="button" class="text-4xl font-bold" (click)="back()">&larr;</button>
+    <div class="flex items-center space-x-2">
+      <a class="rounded-md bg-blue-400 px-2 py-1 text-white" [routerLink]="['/form', todo?.id]">수정</a>
+      <button class="rounded-md bg-red-400 px-2 py-1 text-white" (click)="deleteTodo()">삭제</button>
+    </div>
+  </div>
+</div>
