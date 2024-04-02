@@ -1,12 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-
-type Todo = {
-  id: number,
-  content: string,
-  done: boolean
-}
+import { TodoComponent } from "src/app/components/todo/todo.component";
+import { Todo } from "src/app/model/todo.model";
 
 @Component({
   selector: 'app-home',
@@ -14,7 +10,8 @@ type Todo = {
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    TodoComponent
   ]
 })
 export class Homepage {
