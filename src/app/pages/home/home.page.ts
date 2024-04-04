@@ -1,34 +1,29 @@
-import { CommonModule } from "@angular/common";
-import { Component } from "@angular/core";
-import { FormsModule } from "@angular/forms";
-import { TodoComponent } from "src/app/components/todo/todo.component";
-import { Todo } from "src/app/model/todo.model";
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { TodoComponent } from 'src/app/components/todo/todo.component';
+import { Todo } from 'src/app/model/todo.model';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    TodoComponent
-  ]
+  imports: [CommonModule, FormsModule, TodoComponent],
 })
 export class Homepage {
-
   inputValue: string = '';
 
   todos: Todo[] = [
     {
       id: 1,
       content: '공부하기',
-      done: false
+      done: false,
     },
     {
       id: 2,
       content: '밥먹기',
-      done: false
-    }
+      done: false,
+    },
   ];
 
   addTodo() {
@@ -42,7 +37,7 @@ export class Homepage {
     const newTodo = {
       id: lastTodoId + 1,
       content: this.inputValue,
-      done: false
+      done: false,
     };
 
     this.todos.push(newTodo);
@@ -51,7 +46,6 @@ export class Homepage {
   }
 
   deleteTodo(todo: Todo) {
-    this.todos = this.todos.filter(origin => origin.id !== todo.id);
+    this.todos = this.todos.filter((origin) => origin.id !== todo.id);
   }
-
 }
